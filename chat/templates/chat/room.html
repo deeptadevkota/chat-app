@@ -13,8 +13,9 @@
     <input id="chat-message-submit" type="button" value="Send">
  
     <!-- storing the python dictionary in JSON format | now, the 'room-name' is considered the id-->
+    {{ room_name|json_script:"room-name" }}
     <script>
-          var roomName = {{ room_name_json }};
+          const roomName = JSON.parse(document.getElementById('room-name').textContent);
         /* getting the value of room-name from the JSON and storing it as roomName */
         const chatSocket = new WebSocket(
             'ws://'
